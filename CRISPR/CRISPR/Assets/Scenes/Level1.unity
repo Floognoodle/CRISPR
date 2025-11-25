@@ -725,7 +725,7 @@ GameObject:
   - component: {fileID: 1084350592}
   - component: {fileID: 1084350591}
   m_Layer: 0
-  m_Name: Border1 (2)
+  m_Name: BorderWest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -859,7 +859,7 @@ GameObject:
   - component: {fileID: 1201990673}
   - component: {fileID: 1201990672}
   m_Layer: 0
-  m_Name: Border1 (3)
+  m_Name: BorderSouth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1046,7 +1046,7 @@ GameObject:
   - component: {fileID: 1560835214}
   - component: {fileID: 1560835213}
   m_Layer: 0
-  m_Name: Border1 (1)
+  m_Name: BorderEast
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1267,7 +1267,7 @@ GameObject:
   - component: {fileID: 1927262722}
   - component: {fileID: 1927262720}
   m_Layer: 0
-  m_Name: Border1
+  m_Name: BorderNorth
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
