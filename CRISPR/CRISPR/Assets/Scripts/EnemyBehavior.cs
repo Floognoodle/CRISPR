@@ -69,7 +69,6 @@ public class EnemyWander : MonoBehaviour
         PlayerController pc = playerGO.GetComponent<PlayerController>();
         if (pc == null)
         {
-            Debug.LogWarning("PlayerController not found on enemy collide.");
             return;
         }
 
