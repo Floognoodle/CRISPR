@@ -5,6 +5,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{FB191B32-62E5-75EE-B674-20655DCEFEE9}|Assembly-CSharp.csproj|c:\\users\\ahatch6\\documents\\github\\crispr\\crispr\\crispr\\assets\\scripts\\enemybehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{FB191B32-62E5-75EE-B674-20655DCEFEE9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\enemybehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FB191B32-62E5-75EE-B674-20655DCEFEE9}|Assembly-CSharp.csproj|c:\\users\\ahatch6\\documents\\github\\crispr\\crispr\\crispr\\assets\\scripts\\camerafollowplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FB191B32-62E5-75EE-B674-20655DCEFEE9}|Assembly-CSharp.csproj|solutionrelative:assets\\scripts\\camerafollowplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,8 +18,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CameraFollowPlayer.cs",
+              "DocumentMoniker": "C:\\Users\\ahatch6\\Documents\\GitHub\\CRISPR\\CRISPR\\CRISPR\\Assets\\Scripts\\CameraFollowPlayer.cs",
+              "RelativeDocumentMoniker": "Assets\\Scripts\\CameraFollowPlayer.cs",
+              "ToolTip": "C:\\Users\\ahatch6\\Documents\\GitHub\\CRISPR\\CRISPR\\CRISPR\\Assets\\Scripts\\CameraFollowPlayer.cs",
+              "RelativeToolTip": "Assets\\Scripts\\CameraFollowPlayer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-25T18:15:19.353Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
@@ -24,7 +41,7 @@
               "RelativeDocumentMoniker": "Assets\\Scripts\\EnemyBehavior.cs",
               "ToolTip": "C:\\Users\\ahatch6\\Documents\\GitHub\\CRISPR\\CRISPR\\CRISPR\\Assets\\Scripts\\EnemyBehavior.cs",
               "RelativeToolTip": "Assets\\Scripts\\EnemyBehavior.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAADwv0cAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-11-25T17:30:23.38Z",
               "EditorCaption": ""

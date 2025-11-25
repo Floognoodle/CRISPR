@@ -16,14 +16,12 @@ public class Cell : MonoBehaviour
         if (p == null) return;
 
         health -= 1;
-        Debug.Log("Cell hit. Health = " + health);
 
         Destroy(other.gameObject);
 
         if (health <= 0)
         {
-            Debug.Log("Cell destroyed!");
-            Destroy(gameObject);
+             Destroy(gameObject);
         }
     }
 }
