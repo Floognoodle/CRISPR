@@ -19,7 +19,6 @@ public class Projectile : MonoBehaviour
         sizeScaleStep = newSizeScaleStep;
         float mul = 1f + sizeScaleStep * (size - 1);
         transform.localScale = baseScale * mul;
-
         Destroy(gameObject, lifeTime);
     }
 }

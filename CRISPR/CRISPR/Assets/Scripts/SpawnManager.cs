@@ -16,14 +16,8 @@ public class SpawnManager : MonoBehaviour
 
     void Start()
     {
-        if (enemyPrefabs == null || enemyPrefabs.Count == 0)
-        {
-            Debug.LogWarning("No enemy prefabs set.");
-            return;
-        }
-
+        if (enemyPrefabs == null || enemyPrefabs.Count == 0) return;
         if (enemyParent == null) enemyParent = transform;
-
         StartCoroutine(SpawnLoop());
     }
 
@@ -32,13 +26,8 @@ public class SpawnManager : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
-
             spawned.RemoveAll(x => x == null);
-
-            if (spawned.Count < maxEnemies)
-            {
-                SpawnOne();
-            }
+            if (spawned.Count < maxEnemies) SpawnOne();
         }
     }
 
@@ -56,7 +45,6 @@ public class SpawnManager : MonoBehaviour
         spawned.Add(go);
     }
 
-    // call this when an enemy dies to remove it fast
     public void NotifyEnemyDestroyed(GameObject enemy)
     {
         if (enemy == null) return;

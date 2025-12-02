@@ -19,8 +19,15 @@ public class EnemyWander : MonoBehaviour
 
     void Start()
     {
-        GameObject p = GameObject.FindWithTag("Player");
-        if (p != null) player = p.transform;
+        GameObject[] candidates = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject g in candidates)
+        {
+            if (g.GetComponent<PlayerController>() != null)
+            {
+                player = g.transform;
+                break;
+            }
+        }
         PickDirection();
     }
 
@@ -42,7 +49,6 @@ public class EnemyWander : MonoBehaviour
                 return;
             }
         }
-
         rb.MovePosition(rb.position + dir * moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -54,45 +60,36 @@ public class EnemyWander : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D c)
     {
-        if (!c.collider.CompareTag("Player")) return;
+        PlayerController pc = c.collider.GetComponent<PlayerController>();
+        if (pc == null) return;
         HandlePlayerCollision(c.collider.gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.CompareTag("Player")) return;
+        PlayerController pc = other.GetComponent<PlayerController>();
+        if (pc == null) return;
         HandlePlayerCollision(other.gameObject);
     }
 
     void HandlePlayerCollision(GameObject playerGO)
     {
         PlayerController pc = playerGO.GetComponent<PlayerController>();
-        if (pc == null)
-        {
-            return;
-        }
+        if (pc == null) return;
 
         int playerSize = pc.size;
-        Debug.Log("Enemy collided. enemySize=" + size + " playerSize=" + playerSize);
 
         if (size > playerSize)
         {
-            Debug.Log("Enemy kills player.");
             Destroy(playerGO);
         }
         else if (size < playerSize)
         {
-            Debug.Log("Player destroys enemy and grows.");
             pc.AddSize(1);
-
             SpawnManager sm = UnityEngine.Object.FindFirstObjectByType<SpawnManager>();
             if (sm != null) sm.NotifyEnemyDestroyed(this.gameObject);
-
             Destroy(gameObject);
         }
-        else
-        {
-            Debug.Log("nothing happen.");
-        }
+        // if equal size do nothing
     }
 }
