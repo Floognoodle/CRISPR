@@ -19,56 +19,69 @@ public class EnemyWander : MonoBehaviour
 
     void Start()
     {
-        GameObject[] candidates = GameObject.FindGameObjectsWithTag("Player");
-        foreach (GameObject g in candidates)
+        // Try to find the player object (with PlayerController)
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+        foreach (GameObject obj in players)
         {
-            if (g.GetComponent<PlayerController>() != null)
+            if (obj.GetComponent<PlayerController>() != null)
             {
-                player = g.transform;
+                player = obj.transform;
                 break;
             }
         }
+
         PickDirection();
     }
 
     void Update()
     {
+        // Count down until we pick a new random direction
         timer -= Time.deltaTime;
-        if (timer <= 0f) PickDirection();
+        if (timer <= 0f)
+        {
+            PickDirection();
+        }
     }
 
     void FixedUpdate()
     {
+        // If we have a player, check distance and maybe chase
         if (player != null)
         {
-            float d = Vector2.Distance(transform.position, player.position);
-            if (d < chaseRange)
+            float distToPlayer = Vector2.Distance(transform.position, player.position);
+            if (distToPlayer < chaseRange)
             {
-                Vector2 chase = ((Vector2)player.position - rb.position).normalized;
-                rb.MovePosition(rb.position + chase * moveSpeed * Time.fixedDeltaTime);
+                // Move towards the player
+                Vector2 chaseDirection = ((Vector2)player.position - rb.position).normalized;
+                rb.MovePosition(rb.position + chaseDirection * moveSpeed * Time.fixedDeltaTime);
                 return;
             }
         }
+
+        // If not chasing, just wander around
         rb.MovePosition(rb.position + dir * moveSpeed * Time.fixedDeltaTime);
     }
 
     void PickDirection()
     {
+        // Pick a random direction to move in
         dir = Random.insideUnitCircle.normalized;
         timer = wanderChangeInterval;
     }
 
-    void OnCollisionEnter2D(Collision2D c)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        PlayerController pc = c.collider.GetComponent<PlayerController>();
+        PlayerController pc = collision.collider.GetComponent<PlayerController>();
         if (pc == null) return;
-        HandlePlayerCollision(c.collider.gameObject);
+
+        HandlePlayerCollision(collision.collider.gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         PlayerController pc = other.GetComponent<PlayerController>();
         if (pc == null) return;
+
         HandlePlayerCollision(other.gameObject);
     }
 
@@ -79,17 +92,23 @@ public class EnemyWander : MonoBehaviour
 
         int playerSize = pc.size;
 
+        // If enemy is bigger, kill the player
         if (size > playerSize)
         {
             Destroy(playerGO);
         }
+        // If player is bigger, player kills the enemy
         else if (size < playerSize)
         {
             pc.AddSize(1);
-            SpawnManager sm = UnityEngine.Object.FindFirstObjectByType<SpawnManager>();
-            if (sm != null) sm.NotifyEnemyDestroyed(this.gameObject);
+
+            SpawnManager spawnManager = UnityEngine.Object.FindFirstObjectByType<SpawnManager>();
+            if (spawnManager != null)
+            {
+                spawnManager.NotifyEnemyDestroyed(this.gameObject);
+            }
+
             Destroy(gameObject);
         }
-        // if equal size do nothing
     }
 }
